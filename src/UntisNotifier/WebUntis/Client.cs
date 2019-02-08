@@ -13,6 +13,9 @@ namespace UntisNotifier.WebUntis
 {
     public class Client
     {
+        
+        private const string InvalidCredentialsError = "\"loginError\":\"Invalid user name and/or password\"";
+        
         /// <summary>
         /// Untis Username
         /// </summary>
@@ -93,8 +96,11 @@ namespace UntisNotifier.WebUntis
                 //Send login request
                 response = await _client.PostAsync(_urls.LoginUri, content);
             }
+            var res = await response.Content.ReadAsStringAsync();
 
-            if (response.IsSuccessStatusCode)
+            //the website will return a successful status code if login failed
+            //so we got the opportunity to look in returned html for error --> "loginError":"Invalid user name and/or password" (InvalidCredentialsError)
+            if (res != null && !res.Contains(InvalidCredentialsError))
             {
                 //Logged in!
                 return IsLoggedIn = true;
