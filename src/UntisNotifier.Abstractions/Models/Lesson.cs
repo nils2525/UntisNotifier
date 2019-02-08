@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace UntisNotifier.WebUntis.Models
+namespace UntisNotifier.Abstractions.Models
 {
     public class Lesson
     {

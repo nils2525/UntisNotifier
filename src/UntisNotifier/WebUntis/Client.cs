@@ -7,7 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using UntisNotifier.WebUntis.Models;
+using UntisNotifier.Abstractions.Models;
 
 namespace UntisNotifier.WebUntis
 {
