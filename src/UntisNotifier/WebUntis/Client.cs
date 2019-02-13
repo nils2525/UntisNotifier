@@ -170,53 +170,9 @@ namespace UntisNotifier.WebUntis
                 }
             }
 
-            //All cancalled lessons
-            var cancelledLessons = lessons.Where(l => l.Status.Cancelled == true && l.Date.Date >= DateTime.Today.Date).ToList();
-            //All non default lessons
-            var nonDefaultLessons = lessons.Where(l => l.Status.Standard == null && l.Date.Date >= DateTime.Today.Date).ToList();
-
-            //Write user-friendly message
-            foreach (var cancelledLesson in cancelledLessons)
-            {
-                var messageString = "";
-                if (cancelledLesson.Date.Date == DateTime.Today.Date)
-                {
-                    messageString = "Heute";
-                }
-                else
-                {
-                    messageString = "Am " + cancelledLesson.Date.ToString("dd.MM.yyyy");
-                }
-
-                messageString = messageString + " entfällt die " + cancelledLesson.Hour + " Std. (Fach " + cancelledLesson.Elements.Where(c => c.Type == ElementType.Subject).FirstOrDefault().LongName + ")";
-
-                Console.WriteLine(messageString);
-            }
-
-            //Write user-friendly message
-            foreach (var nonDefaultLesson in nonDefaultLessons)
-            {
-                var messageString = "";
-                if (nonDefaultLesson.Date.Date == DateTime.Today.Date)
-                {
-                    messageString = "Heute";
-                }
-                else
-                {
-                    messageString = "Am " + nonDefaultLesson.Date.ToString("dd.MM.yyyy");
-                }
-
-                messageString = messageString + " wird die " + nonDefaultLesson.Hour + " Std. (Fach " + nonDefaultLesson.Elements.Where(c => c.Type == ElementType.Subject).FirstOrDefault().LongName + ") vertreten";
-
-                Console.WriteLine(messageString);
-            }
-
-            //Return lessons in list
-            var resultLessons = new List<Lesson>();
-            resultLessons.AddRange(cancelledLessons);
-            resultLessons.AddRange(nonDefaultLessons);
-
-            return resultLessons;
+            return lessons
+                .Where(l => (l.Status.Cancelled  == true || l.Status.Standard == null) && 
+                            l.Date.Date >= DateTime.Today.Date).ToList();
         }
     }
 }

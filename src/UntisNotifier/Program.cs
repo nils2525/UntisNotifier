@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
+using UntisNotifier.Abstractions.NotifyService;
 
 namespace UntisNotifier
 {
@@ -10,9 +11,10 @@ namespace UntisNotifier
         {
 
             var configurator = new Configurator(Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                "UntisNotifier",
-                "UntisNotifier.json"));
+                Environment.GetFolderPath(
+                    Environment.SpecialFolder.ApplicationData),
+                    "UntisNotifier",
+                    "UntisNotifier.json"));
             
             var client = configurator.GetWebUntisClient();
             var isLoggedIn = await client.LoginAsync();
