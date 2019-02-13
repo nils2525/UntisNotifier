@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UntisNotifier", "UntisNotif
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UntisNotifier.Abstractions", "UntisNotifier.Abstractions\UntisNotifier.Abstractions.csproj", "{F116F726-E38A-4BE7-8D05-F1F1CE794C7E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UntisNotifier.Console", "UntisNotifier.Console\UntisNotifier.Console.csproj", "{1650EF40-E2B6-479A-B504-0E067A486E95}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F116F726-E38A-4BE7-8D05-F1F1CE794C7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F116F726-E38A-4BE7-8D05-F1F1CE794C7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F116F726-E38A-4BE7-8D05-F1F1CE794C7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1650EF40-E2B6-479A-B504-0E067A486E95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1650EF40-E2B6-479A-B504-0E067A486E95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1650EF40-E2B6-479A-B504-0E067A486E95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1650EF40-E2B6-479A-B504-0E067A486E95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

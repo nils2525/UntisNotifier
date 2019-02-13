@@ -1,7 +1,11 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using UntisNotifier.Abstractions.NotifyService;
+using UntisNotifier.Console;
 
 namespace UntisNotifier
 {
@@ -9,6 +13,8 @@ namespace UntisNotifier
     {
 
         private JObject _config;
+
+        public List<INotifyService> Notifiers { get; private set; } = new List<INotifyService>();
         
         public Configurator(string filePath)
         {
@@ -23,8 +29,23 @@ namespace UntisNotifier
             }
 
             _config = JsonConvert.DeserializeObject<JObject>(readJson);
+            
+            InitNotifiers();
         }
 
+        private void InitNotifiers()
+        {
+            InitConsoleNotifier();
+        }
+
+        private void InitConsoleNotifier()
+        {
+            if (_config.ContainsKey("notifiers") && _config["notifiers"].ToObject<JObject>().ContainsKey("Console"))
+            {
+                Notifiers.Add(new ConsoleNotifier());
+            }
+        }
+        
         public WebUntis.Client GetWebUntisClient()
         {
             var userObj = _config["user"];

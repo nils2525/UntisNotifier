@@ -1,7 +1,13 @@
 {
+  "NOTE": "THIS IS ONLY A EXAMPLE CONFIG",
   "user" : {
     "name" : "userName",
     "password" : "password",
     "school" : "school"
+  },
+  "notifiers" : {
+    "Console" : {
+
+    }
   }
 }

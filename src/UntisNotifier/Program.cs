@@ -21,6 +21,10 @@ namespace UntisNotifier
             if (isLoggedIn)
             {
                 var lessons = await client.GetChangedLessons();
+                if (lessons != null)
+                {
+                    configurator.Notifiers.ForEach(n => n.Notify(lessons));
+                }
             }
         }
     }
