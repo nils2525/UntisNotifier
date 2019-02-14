@@ -7,7 +7,7 @@
   },
   "notifiers" : {
     "Console" : {
-
+      "active" : "true"
     }
   }
 }
