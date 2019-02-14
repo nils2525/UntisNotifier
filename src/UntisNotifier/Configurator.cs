@@ -58,7 +58,7 @@ namespace UntisNotifier
         }
         private void InitTelegramNotifier()
         {
-            if (_config.ContainsKey("notifiers") && _config["notifiers"].ToObject<JObject>().ContainsKey("Telegram"))
+            if (_notifiers.ContainsKey("Telegram") && IsNotifierActive("Telegram"))
             {
                 Notifiers.Add(new TelegramNotifier());
             }

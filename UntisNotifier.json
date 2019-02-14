@@ -8,6 +8,9 @@
   "notifiers" : {
     "Console" : {
       "active" : "true"
-    }
+    },
+	"Telegram" : {
+	  "active" : "true"
+	}
   }
 }
