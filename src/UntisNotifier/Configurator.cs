@@ -8,6 +8,7 @@ using Newtonsoft.Json.Linq;
 using UntisNotifier.Abstractions.NotifyService;
 using UntisNotifier.Console;
 using UntisNotifier.Email;
+using UntisNotifier.Telegram;
 
 namespace UntisNotifier
 {
@@ -48,6 +49,7 @@ namespace UntisNotifier
         {
             InitConsoleNotifier();
             InitEmailNotifier();
+            InitTelegramNotifier();
         }
 
         private void InitConsoleNotifier()
@@ -57,6 +59,14 @@ namespace UntisNotifier
                 Notifiers.Add(new ConsoleNotifier());
             }
         }
+        private void InitTelegramNotifier()
+        {
+            if (_notifiers.ContainsKey("Telegram") && IsNotifierActive("Telegram"))
+            {
+                Notifiers.Add(new TelegramNotifier());
+            }
+        }
+        
 
         private void InitEmailNotifier()
         {
@@ -74,7 +84,7 @@ namespace UntisNotifier
 
         private bool IsNotifierActive(string notifier)
         {
-            return _notifiers.ContainsKey("console") && ((JObject) _notifiers[notifier]).SelectToken("active").Value<bool>();
+            return ((JObject) _notifiers[notifier]).SelectToken("active").Value<bool>();
         }
 
         public WebUntis.Client GetWebUntisClient()

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-using UntisNotifier.Abstractions.NotifyService;
 
 namespace UntisNotifier
 {
@@ -9,7 +8,6 @@ namespace UntisNotifier
     {
         static async Task Main(string[] args)
         {
-
             var configurator = new Configurator(Path.Combine(
                 Environment.GetFolderPath(
                     Environment.SpecialFolder.ApplicationData),

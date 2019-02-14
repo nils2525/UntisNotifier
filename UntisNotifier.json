@@ -16,6 +16,9 @@
       "password" : "password",
       "smtpServer" : "server",
       "smtpPort" : "port"
-    }
+    },
+	"Telegram" : {
+	  "active" : "true"
+	}
   }
 }
