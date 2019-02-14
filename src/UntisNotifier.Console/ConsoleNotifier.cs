@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UntisNotifier.Abstractions.Models;
 using UntisNotifier.Abstractions.NotifyService;
 
+/*
+ Example config
+"console" : {
+  "active" : "true"
+}
+ */
+
 namespace UntisNotifier.Console
 {
     public class ConsoleNotifier : INotifyService

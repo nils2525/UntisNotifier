@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Mail;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UntisNotifier.Abstractions.NotifyService;
 using UntisNotifier.Console;
+using UntisNotifier.Email;
 
 namespace UntisNotifier
 {
@@ -45,19 +47,34 @@ namespace UntisNotifier
         private void InitNotifiers()
         {
             InitConsoleNotifier();
+            InitEmailNotifier();
         }
 
         private void InitConsoleNotifier()
         {
-            if (_notifiers.ContainsKey("console") && IsNotifierActive("console"))
+            if (IsNotifierActive("console"))
             {
                 Notifiers.Add(new ConsoleNotifier());
             }
         }
 
+        private void InitEmailNotifier()
+        {
+            if (!IsNotifierActive("email")) return;
+            
+            if (_notifiers["email"] is JObject notifier)
+                Notifiers.Add(new EmailNotifier(
+                    new MailAddress(notifier["fromEmail"].Value<string>()),
+                    new MailAddress(notifier["toEmail"].Value<string>()),
+                    notifier["password"].Value<string>(),
+                    notifier["smtpServer"].Value<string>(),
+                    notifier["smtpPort"].Value<int>()
+                ));
+        }
+
         private bool IsNotifierActive(string notifier)
         {
-            return ((JObject) _notifiers[notifier]).SelectToken("active").Value<bool>();
+            return _notifiers.ContainsKey("console") && ((JObject) _notifiers[notifier]).SelectToken("active").Value<bool>();
         }
 
         public WebUntis.Client GetWebUntisClient()

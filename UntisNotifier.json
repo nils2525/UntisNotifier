@@ -8,6 +8,14 @@
   "notifiers" : {
     "console" : {
       "active" : "true"
+    },
+    "email" : {
+      "active" : "true",
+      "fromEmail" : "email",
+      "toEmail" : "email",
+      "password" : "password",
+      "smtpServer" : "server",
+      "smtpPort" : "port"
     }
   }
 }
