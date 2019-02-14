@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UntisNotifier.Abstractions.NotifyService;
 using UntisNotifier.Console;
+using UntisNotifier.Telegram;
 
 namespace UntisNotifier
 {
@@ -36,6 +37,7 @@ namespace UntisNotifier
         private void InitNotifiers()
         {
             InitConsoleNotifier();
+            InitTelegramNotifier();
         }
 
         private void InitConsoleNotifier()
@@ -43,6 +45,13 @@ namespace UntisNotifier
             if (_config.ContainsKey("notifiers") && _config["notifiers"].ToObject<JObject>().ContainsKey("Console"))
             {
                 Notifiers.Add(new ConsoleNotifier());
+            }
+        }
+        private void InitTelegramNotifier()
+        {
+            if (_config.ContainsKey("notifiers") && _config["notifiers"].ToObject<JObject>().ContainsKey("Telegram"))
+            {
+                Notifiers.Add(new TelegramNotifier());
             }
         }
         

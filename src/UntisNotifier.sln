@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UntisNotifier", "UntisNotifier\UntisNotifier.csproj", "{D8957159-AF02-4564-AC94-B58975F0E7CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UntisNotifier", "UntisNotifier\UntisNotifier.csproj", "{D8957159-AF02-4564-AC94-B58975F0E7CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UntisNotifier.Abstractions", "UntisNotifier.Abstractions\UntisNotifier.Abstractions.csproj", "{F116F726-E38A-4BE7-8D05-F1F1CE794C7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UntisNotifier.Abstractions", "UntisNotifier.Abstractions\UntisNotifier.Abstractions.csproj", "{F116F726-E38A-4BE7-8D05-F1F1CE794C7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UntisNotifier.Console", "UntisNotifier.Console\UntisNotifier.Console.csproj", "{1650EF40-E2B6-479A-B504-0E067A486E95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UntisNotifier.Console", "UntisNotifier.Console\UntisNotifier.Console.csproj", "{1650EF40-E2B6-479A-B504-0E067A486E95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UntisNotifier.Telegram", "UntisNotifier.Telegram\UntisNotifier.Telegram.csproj", "{DE90B7F9-762A-40DC-B92B-BCC7A4BCFC51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{1650EF40-E2B6-479A-B504-0E067A486E95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1650EF40-E2B6-479A-B504-0E067A486E95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1650EF40-E2B6-479A-B504-0E067A486E95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE90B7F9-762A-40DC-B92B-BCC7A4BCFC51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE90B7F9-762A-40DC-B92B-BCC7A4BCFC51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE90B7F9-762A-40DC-B92B-BCC7A4BCFC51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE90B7F9-762A-40DC-B92B-BCC7A4BCFC51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
