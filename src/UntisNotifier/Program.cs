@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -21,8 +22,9 @@ namespace UntisNotifier
                 var lessons = await client.GetChangedLessons();
                 if (lessons != null)
                 {
-                    //ToDo: Notify müsste eingentlich in verschiedenen threads laufen
-                    configurator.Notifiers.ForEach(n => n.Notify(lessons));
+                    var tasks = new List<Task>();
+                    configurator.Notifiers.ForEach(n => tasks.Add(Task.Factory.StartNew(() => n.Notify(lessons))));
+                    await Task.WhenAll(tasks.ToArray());
                 }
             }
         }
