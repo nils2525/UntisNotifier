@@ -49,7 +49,7 @@ namespace UntisNotifier
 
         private void InitConsoleNotifier()
         {
-            if (_notifiers.ContainsKey("Console") && IsNotifierActive("Console"))
+            if (_notifiers.ContainsKey("console") && IsNotifierActive("console"))
             {
                 Notifiers.Add(new ConsoleNotifier());
             }

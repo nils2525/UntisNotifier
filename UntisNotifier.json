@@ -6,7 +6,7 @@
     "school" : "school"
   },
   "notifiers" : {
-    "Console" : {
+    "console" : {
       "active" : "true"
     }
   }
