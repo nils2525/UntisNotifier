@@ -21,6 +21,7 @@ namespace UntisNotifier
                 var lessons = await client.GetChangedLessons();
                 if (lessons != null)
                 {
+                    //ToDo: Notify müsste eingentlich in verschiedenen threads laufen
                     configurator.Notifiers.ForEach(n => n.Notify(lessons));
                 }
             }
