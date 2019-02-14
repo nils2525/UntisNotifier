@@ -17,8 +17,10 @@
       "smtpServer" : "server",
       "smtpPort" : "port"
     },
-	"Telegram" : {
-	  "active" : "true"
+	"telegram" : {
+	  "active" : "true",
+      "token" : "token",
+      "chatId" : "chatId"
 	}
   }
 }

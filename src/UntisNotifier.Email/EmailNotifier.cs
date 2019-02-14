@@ -57,7 +57,7 @@ namespace UntisNotifier.Email
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    Console.Error.WriteLine(e.ToString());
                     return false;
                 }
             }

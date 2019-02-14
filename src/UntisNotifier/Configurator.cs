@@ -59,19 +59,25 @@ namespace UntisNotifier
                 Notifiers.Add(new ConsoleNotifier());
             }
         }
+
         private void InitTelegramNotifier()
         {
-            if (_notifiers.ContainsKey("Telegram") && IsNotifierActive("Telegram"))
+            if (!IsNotifierActive("telegram")) return;
+
+            if (_notifiers["telegram"] is JObject telegram)
             {
-                Notifiers.Add(new TelegramNotifier());
+                Notifiers.Add(new TelegramNotifier(
+                    telegram["token"].Value<string>(),
+                    telegram["chatId"].Value<int>()
+                    ));
             }
         }
-        
+
 
         private void InitEmailNotifier()
         {
             if (!IsNotifierActive("email")) return;
-            
+
             if (_notifiers["email"] is JObject notifier)
                 Notifiers.Add(new EmailNotifier(
                     new MailAddress(notifier["fromEmail"].Value<string>()),
@@ -84,7 +90,8 @@ namespace UntisNotifier
 
         private bool IsNotifierActive(string notifier)
         {
-            return ((JObject) _notifiers[notifier]).SelectToken("active").Value<bool>();
+            return _notifiers.ContainsKey((notifier)) &&
+                   ((JObject) _notifiers[notifier]).SelectToken("active").Value<bool>();
         }
 
         public WebUntis.Client GetWebUntisClient()

@@ -5,16 +5,33 @@ using System.Web;
 using UntisNotifier.Abstractions.Models;
 using UntisNotifier.Abstractions.NotifyService;
 
+/*
+ "telegram" : {
+	  "active" : "true",
+      "token" : "token",
+      "chatId" : "chatId"
+}
+ */
+
 namespace UntisNotifier.Telegram
 {
     public class TelegramNotifier : INotifyService
     {
+        private readonly string _token;
+        private readonly int _chatId;
+
+        public TelegramNotifier(string token, int chatId)
+        {
+            _token = token;
+            _chatId = chatId;
+        }
+        
         public bool Notify(IEnumerable<Lesson> lessons)
         {
             //Login to telegram if not initialized
             if (!TelegramClient.Instance.IsInitialized)
             {
-                var result = Task.Run(() => TelegramClient.Instance.InitClientAsync("")).Result;
+                var result = Task.Run(() => TelegramClient.Instance.InitClientAsync(_token)).Result;
                 if (!result)
                 {
                     return false;
@@ -26,7 +43,7 @@ namespace UntisNotifier.Telegram
             var finalMessage = String.Join("\n", messages);
 
             //Send message to telegram client
-            return Task.Run(() => TelegramClient.Instance.SendMessageAsync(finalMessage, 9999999)).Result;
+            return Task.Run(() => TelegramClient.Instance.SendMessageAsync(finalMessage, _chatId)).Result;
         }
     }
 }
