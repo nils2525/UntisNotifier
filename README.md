@@ -7,7 +7,7 @@ This is a tool for the [WebUntis](https://mese.webuntis.com/WebUntis) website, t
 * E-Mail
 
 ## How do I install this?
-//ToDo
+Configfile location under Linux: `$pwd/.config/UntisNotifier`
 
 ## Requirements
 [Latest .NET Core Runtime](https://dotnet.microsoft.com/download)
