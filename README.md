@@ -9,6 +9,9 @@ This is a tool for the [WebUntis](https://mese.webuntis.com/WebUntis) website, t
 ## How do I install this?
 //ToDo
 
+## Requirements
+[Latest .NET Core Runtime](https://dotnet.microsoft.com/download)
+
 ## Example config file
 ```json
 {
