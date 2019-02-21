@@ -1,6 +1,6 @@
 # UntisNotifier
 ## What is this?
-This is a tool for the [WebUntis](https://mese.webuntis.com/WebUntis]) website, that sends notifications through different configurable channels like Telegram or E-Mail to inform you about changes of your school lessons.
+This is a tool for the [WebUntis](https://mese.webuntis.com/WebUntis) website, that sends notifications through different configurable channels like Telegram or E-Mail to inform you about changes of your school lessons.
 
 ## Which services do whe currently support?
 * Telegram
