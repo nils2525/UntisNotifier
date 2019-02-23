@@ -7,6 +7,11 @@ This is a tool for the [WebUntis](https://mese.webuntis.com/WebUntis) website, t
 * E-Mail
 
 ## How do I install this?
+* [Download the latest release](https://github.com/nils2525/UntisNotifier/releases)
+* Unzip the binaries in folder that your prefer (for example `$pwd/bin/UntisNotifier`)
+* Create a configuration in the Configfile location
+* Start it with `dotnet $binariesLocation/UntisNotifier.dll`
+
 Configfile location under Linux: `$pwd/.config/UntisNotifier`  
 Configfile location under Windows: `%appdata%\UntisNotifier\UntisNotifier.json`
 
@@ -43,5 +48,7 @@ Configfile location under Windows: `%appdata%\UntisNotifier\UntisNotifier.json`
 }
 ```
   
-
+## Troubleshooting
+### The programm returns exit code -2147450749 (0x80008083)
+You need to have installed [the latest version of .NET Core](https://dotnet.microsoft.com/download)
 
