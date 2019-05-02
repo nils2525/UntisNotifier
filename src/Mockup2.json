@@ -1,0 +1,541 @@
+{
+    "data": {
+        "result": {
+            "data": {
+                "noDetails": false,
+                "elementIds": [
+                    972
+                ],
+                "elementPeriods": {
+                    "972": [
+                        {
+                            "id": 1013551,
+                            "lessonId": 13521,
+                            "lessonNumber": 2040700,
+                            "lessonCode": "UNTIS_LESSON",
+                            "lessonText": "",
+                            "periodText": "",
+                            "hasPeriodText": false,
+                            "date": 20190411,
+                            "startTime": 750,
+                            "endTime": 835,
+                            "elements": [
+                                {
+                                    "type": 1,
+                                    "id": 972,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 2,
+                                    "id": 144,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 3,
+                                    "id": 4,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 4,
+                                    "id": 80,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                }
+                            ],
+                            "hasInfo": false,
+                            "code": 120,
+                            "cellState": "CANCEL",
+                            "priority": 8,
+                            "is": {
+                                "cancelled": true,
+                                "event": false
+                            },
+                            "roomCapacity": 0,
+                            "studentCount": 0
+                        },
+                        {
+                            "id": 1013552,
+                            "lessonId": 13521,
+                            "lessonNumber": 2040700,
+                            "lessonCode": "UNTIS_LESSON",
+                            "lessonText": "",
+                            "periodText": "",
+                            "hasPeriodText": false,
+                            "date": 20190411,
+                            "startTime": 835,
+                            "endTime": 920,
+                            "elements": [
+                                {
+                                    "type": 1,
+                                    "id": 972,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 2,
+                                    "id": 144,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 3,
+                                    "id": 4,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 4,
+                                    "id": 80,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                }
+                            ],
+                            "hasInfo": false,
+                            "code": 120,
+                            "cellState": "CANCEL",
+                            "priority": 8,
+                            "is": {
+                                "cancelled": true,
+                                "event": false
+                            },
+                            "roomCapacity": 0,
+                            "studentCount": 0
+                        },
+                        {
+                            "id": 1013553,
+                            "lessonId": 13521,
+                            "lessonNumber": 2040700,
+                            "lessonCode": "UNTIS_LESSON",
+                            "lessonText": "",
+                            "periodText": "",
+                            "hasPeriodText": false,
+                            "date": 20190411,
+                            "startTime": 940,
+                            "endTime": 1025,
+                            "elements": [
+                                {
+                                    "type": 1,
+                                    "id": 972,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 2,
+                                    "id": 208,
+                                    "orgId": 144,
+                                    "missing": false,
+                                    "state": "SUBSTITUTED"
+                                },
+                                {
+                                    "type": 3,
+                                    "id": 4,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 4,
+                                    "id": 80,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                }
+                            ],
+                            "hasInfo": false,
+                            "code": 0,
+                            "cellState": "SUBSTITUTION",
+                            "priority": 3,
+                            "is": {
+                                "substitution": true,
+                                "event": false
+                            },
+                            "roomCapacity": 0,
+                            "studentCount": 0
+                        },
+                        {
+                            "id": 937245,
+                            "lessonId": 13972,
+                            "lessonNumber": 2040800,
+                            "lessonCode": "UNTIS_LESSON",
+                            "lessonText": "",
+                            "periodText": "",
+                            "hasPeriodText": false,
+                            "date": 20190411,
+                            "startTime": 1025,
+                            "endTime": 1110,
+                            "elements": [
+                                {
+                                    "type": 1,
+                                    "id": 972,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 2,
+                                    "id": 208,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 3,
+                                    "id": 110,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 4,
+                                    "id": 82,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                }
+                            ],
+                            "hasInfo": false,
+                            "code": 0,
+                            "cellState": "STANDARD",
+                            "priority": 5,
+                            "is": {
+                                "standard": true,
+                                "event": false
+                            },
+                            "roomCapacity": 0,
+                            "studentCount": 0
+                        },
+                        {
+                            "id": 1028740,
+                            "lessonId": 13972,
+                            "lessonNumber": 2040800,
+                            "lessonCode": "UNTIS_LESSON",
+                            "lessonText": "",
+                            "periodText": "",
+                            "hasPeriodText": false,
+                            "date": 20190411,
+                            "startTime": 1130,
+                            "endTime": 1215,
+                            "elements": [
+                                {
+                                    "type": 1,
+                                    "id": 972,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 2,
+                                    "id": 208,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 3,
+                                    "id": 110,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 4,
+                                    "id": 82,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                }
+                            ],
+                            "hasInfo": false,
+                            "code": 0,
+                            "cellState": "STANDARD",
+                            "priority": 5,
+                            "is": {
+                                "standard": true,
+                                "event": false
+                            },
+                            "roomCapacity": 0,
+                            "studentCount": 0
+                        },
+                        {
+                            "id": 1041700,
+                            "lessonId": 14412,
+                            "lessonNumber": 2041000,
+                            "lessonCode": "UNTIS_LESSON",
+                            "lessonText": "",
+                            "periodText": "",
+                            "hasPeriodText": false,
+                            "date": 20190411,
+                            "startTime": 1215,
+                            "endTime": 1300,
+                            "elements": [
+                                {
+                                    "type": 1,
+                                    "id": 972,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 2,
+                                    "id": 117,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 3,
+                                    "id": 236,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 4,
+                                    "id": 25,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                }
+                            ],
+                            "hasInfo": false,
+                            "code": 0,
+                            "cellState": "STANDARD",
+                            "priority": 5,
+                            "is": {
+                                "standard": true,
+                                "event": false
+                            },
+                            "roomCapacity": 0,
+                            "studentCount": 0
+                        },
+                        {
+                            "id": 1041701,
+                            "lessonId": 14412,
+                            "lessonNumber": 2041000,
+                            "lessonCode": "UNTIS_LESSON",
+                            "lessonText": "Klaus WGP",
+                            "periodText": "",
+                            "hasPeriodText": false,
+                            "date": 20190411,
+                            "startTime": 1315,
+                            "endTime": 1400,
+                            "elements": [
+                                {
+                                    "type": 1,
+                                    "id": 972,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 2,
+                                    "id": 117,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 3,
+                                    "id": 236,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 4,
+                                    "id": 20,
+                                    "orgId": 25,
+                                    "missing": false,
+                                    "state": "SUBSTITUTED"
+                                }
+                            ],
+                            "hasInfo": false,
+                            "code": 0,
+                            "cellState": "EXAM",
+                            "priority": 1,
+                            "is": {
+                                "exam": true,
+                                "event": false
+                            },
+                            "roomCapacity": 0,
+                            "studentCount": 0
+                        },
+                        {
+                            "id": 1041702,
+                            "lessonId": 14412,
+                            "lessonNumber": 2041000,
+                            "lessonCode": "UNTIS_LESSON",
+                            "lessonText": "Klaus WGP",
+                            "periodText": "",
+                            "hasPeriodText": false,
+                            "date": 20190411,
+                            "startTime": 1400,
+                            "endTime": 1445,
+                            "elements": [
+                                {
+                                    "type": 1,
+                                    "id": 972,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 2,
+                                    "id": 117,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 3,
+                                    "id": 236,
+                                    "orgId": 0,
+                                    "missing": false,
+                                    "state": "REGULAR"
+                                },
+                                {
+                                    "type": 4,
+                                    "id": 20,
+                                    "orgId": 25,
+                                    "missing": false,
+                                    "state": "SUBSTITUTED"
+                                }
+                            ],
+                            "hasInfo": false,
+                            "code": 0,
+                            "cellState": "EXAM",
+                            "priority": 1,
+                            "is": {
+                                "exam": true,
+                                "event": false
+                            },
+                            "roomCapacity": 0,
+                            "studentCount": 0
+                        }
+                    ]
+                },
+                "elements": [
+                    {
+                        "type": 1,
+                        "id": 972,
+                        "name": "IFA7A",
+                        "longName": "Fachinformatiker - Anwendungsentwicklung",
+                        "displayname": "IFA7A",
+                        "alternatename": "",
+                        "canViewTimetable": true,
+                        "roomCapacity": 0
+                    },
+                    {
+                        "type": 2,
+                        "id": 144,
+                        "name": "SAY",
+                        "canViewTimetable": false,
+                        "externKey": "",
+                        "roomCapacity": 0
+                    },
+                    {
+                        "type": 2,
+                        "id": 208,
+                        "name": "SOF",
+                        "canViewTimetable": false,
+                        "externKey": "",
+                        "roomCapacity": 0
+                    },
+                    {
+                        "type": 3,
+                        "id": 4,
+                        "name": "AEW",
+                        "longName": "Anwendungsentwicklung",
+                        "displayname": "AEW",
+                        "alternatename": "",
+                        "canViewTimetable": false,
+                        "roomCapacity": 0
+                    },
+                    {
+                        "type": 3,
+                        "id": 236,
+                        "name": "WGP",
+                        "longName": "Wirtschafts- und Geschäftsprozesse",
+                        "displayname": "WGP",
+                        "alternatename": "",
+                        "canViewTimetable": false,
+                        "roomCapacity": 0
+                    },
+                    {
+                        "type": 4,
+                        "id": 80,
+                        "name": "554",
+                        "longName": "PC-Raum IT",
+                        "displayname": "554",
+                        "alternatename": "",
+                        "canViewTimetable": false,
+                        "roomCapacity": 0
+                    },
+                    {
+                        "type": 4,
+                        "id": 20,
+                        "name": "109",
+                        "longName": "Klassenraum",
+                        "displayname": "109",
+                        "alternatename": "",
+                        "canViewTimetable": false,
+                        "roomCapacity": 0
+                    },
+                    {
+                        "type": 2,
+                        "id": 117,
+                        "name": "YFEN",
+                        "foreColor": "#0000ff",
+                        "backColor": "#ffffff",
+                        "canViewTimetable": false,
+                        "externKey": "",
+                        "roomCapacity": 0
+                    },
+                    {
+                        "type": 4,
+                        "id": 25,
+                        "name": "119",
+                        "longName": "FR Kommunikation",
+                        "displayname": "119",
+                        "alternatename": "",
+                        "canViewTimetable": false,
+                        "roomCapacity": 0
+                    },
+                    {
+                        "type": 3,
+                        "id": 110,
+                        "name": "ITS",
+                        "longName": "IT-Systeme",
+                        "displayname": "ITS",
+                        "alternatename": "",
+                        "canViewTimetable": false,
+                        "roomCapacity": 0
+                    },
+                    {
+                        "type": 4,
+                        "id": 82,
+                        "name": "556",
+                        "longName": "Cisco1",
+                        "displayname": "556",
+                        "alternatename": "",
+                        "canViewTimetable": false,
+                        "roomCapacity": 0
+                    }
+                ]
+            },
+            "lastImportTimestamp": 1556776485369
+        }
+    }
+}
