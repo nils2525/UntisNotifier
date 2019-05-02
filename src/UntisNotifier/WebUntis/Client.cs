@@ -8,14 +8,16 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using UntisNotifier.Abstractions.Models;
+using UntisNotifier.Data;
+using UntisNotifier.WebUntis.Models;
 
 namespace UntisNotifier.WebUntis
 {
     public class Client
     {
-        
+
         private const string InvalidCredentialsError = "\"loginError\":\"Invalid user name and/or password\"";
-        
+
         /// <summary>
         /// Untis Username
         /// </summary>
@@ -105,6 +107,7 @@ namespace UntisNotifier.WebUntis
                 //Logged in!
                 return IsLoggedIn = true;
             }
+            System.Console.WriteLine("Login was not successfully");
             return IsLoggedIn = false;
         }
 
@@ -128,7 +131,7 @@ namespace UntisNotifier.WebUntis
                     var jsonObject = JObject.Parse(jsonString);
 
                     var rawLessons = jsonObject["data"]["result"]["data"]["elementPeriods"]["972"];
-                    var parsedLessons = JsonConvert.DeserializeObject<List<Lesson>>(rawLessons.ToString());
+                    var parsedLessons = JsonConvert.DeserializeObject<List<LessonResult>>(rawLessons.ToString());
 
                     var rawElements = jsonObject["data"]["result"]["data"]["elements"];
                     var parsedElements = JsonConvert.DeserializeObject<List<Element>>(rawElements.ToString());
@@ -146,8 +149,7 @@ namespace UntisNotifier.WebUntis
                             }
                         }
                     }
-
-                    return parsedLessons;
+                    return ParseLessons(parsedLessons);
                 }
             }
             return null;
@@ -158,7 +160,7 @@ namespace UntisNotifier.WebUntis
         /// </summary>
         /// <param name="lessons"></param>
         /// <returns></returns>
-        public async Task<List<Lesson>> GetChangedLessons(List<Lesson> lessons = null)
+        public async Task<List<Lesson>> GetAbnormalLessons(List<Lesson> lessons = null, bool onlyNewChanges = false, bool updateDatabase = true)
         {
             if (lessons == null)
             {
@@ -170,9 +172,122 @@ namespace UntisNotifier.WebUntis
                 }
             }
 
-            return lessons
-                .Where(l => (l.Status.Cancelled  == true || l.Status.Standard == null) && 
-                            l.Date.Date >= DateTime.Today.Date).ToList();
+            var result = new List<Lesson>();
+            using (var context = new DatabaseContext())
+            {
+                if (onlyNewChanges)
+                {
+                    result = lessons.Where(c => LessonHasChanged(c, context) ?? (c.LessonStatus != Abstractions.Models.LessonStatus.Normal || c.RoomIsAbnormal || c.TeacherIsAbnormal)).ToList();
+                }
+                else
+                {
+                    result = lessons.Where(c => c.LessonStatus != Abstractions.Models.LessonStatus.Normal || c.RoomIsAbnormal || c.TeacherIsAbnormal).ToList();
+                }
+
+                if (updateDatabase)
+                {
+                    UpdateLessonsInDB(lessons);
+                }
+            }
+
+            return lessons.Where(l => l.LessonStatus != Abstractions.Models.LessonStatus.Normal && l.StartTime.Date >= DateTime.Today.Date).ToList();
+        }
+
+
+        private bool? LessonHasChanged(Lesson lesson, DatabaseContext context)
+        {
+            var dbLesson = context.Lessons.Where(c => c.ID == lesson.ID).FirstOrDefault();
+            if (dbLesson != null)
+            {
+                return dbLesson.LessonStatus != lesson.LessonStatus ||
+                    dbLesson.RoomIsAbnormal != lesson.RoomIsAbnormal ||
+                    dbLesson.TeacherIsAbnormal != lesson.TeacherIsAbnormal;
+            }
+            return null;
+        }
+
+        private List<Lesson> ParseLessons(List<LessonResult> lessonResults)
+        {
+            var result = new List<Lesson>();
+            foreach (var lesson in lessonResults)
+            {
+                result.Add(ParseLesson(lesson));
+            }
+            return result;
+        }
+        private Lesson ParseLesson(LessonResult lessonResult)
+        {
+            var startTimeString = lessonResult.StartTime.ToString().PadLeft(4, '0');
+            var startHours = Int32.Parse(startTimeString.Remove(2, 2));
+            var startMinutes = Int32.Parse(startTimeString.Remove(0, 2));
+
+            var endTimeString = lessonResult.EndTime.ToString().PadLeft(4, '0');
+            var endHours = Int32.Parse(endTimeString.Remove(2, 2));
+            var endMinutes = Int32.Parse(endTimeString.Remove(0, 2));
+
+
+            var subject = lessonResult.Elements.Where(c => c.Type == ElementType.Subject).First();
+            var teacher = lessonResult.Elements.Where(c => c.Type == ElementType.Teacher).First();
+            var room = lessonResult.Elements.Where(c => c.Type == ElementType.Student).First();
+
+            Abstractions.Models.LessonStatus status = Abstractions.Models.LessonStatus.Normal;
+
+
+            if (teacher.State == ElementState.Regular || lessonResult.Status.Standard == true)
+            {
+                status = Abstractions.Models.LessonStatus.Normal;
+            }
+            else if (lessonResult.Status.Cancelled == true)
+            {
+                status = Abstractions.Models.LessonStatus.Canceled;
+            }
+            else if (lessonResult.Status.Exam == true)
+            {
+                status = Abstractions.Models.LessonStatus.Exam;
+            }
+            else if (lessonResult.Status.Event)
+            {
+                status = Abstractions.Models.LessonStatus.Event;
+            }
+
+
+            var lesson = new Lesson()
+            {
+                StartTime = lessonResult.Date.AddMinutes((startHours * 60) + startMinutes),
+                EndTime = lessonResult.Date.AddMinutes((endHours * 60) + endMinutes),
+                Name = subject.Name,
+                FullName = subject.LongName,
+                Teacher = teacher.Name,
+                FullTeacherName = teacher.LongName,
+                TeacherIsAbnormal = teacher.State == ElementState.Substituted,
+                Room = room.Name,
+                RoomIsAbnormal = lessonResult.Status.RoomSubstitution ?? room.State == ElementState.Substituted,
+                SchoolHour = lessonResult.Hour,
+                LessonStatus = status,
+                ID = lessonResult.ID
+            };
+
+            return lesson;
+        }
+
+        private void UpdateLessonsInDB(List<Lesson> lessons)
+        {
+            using (var context = new Data.DatabaseContext())
+            {
+                foreach (var lesson in lessons)
+                {
+
+                    if (!context.Lessons.Any(c => c.ID == lesson.ID))
+                    {
+                        context.Lessons.Add(lesson);
+                    }
+                    else
+                    {
+                        context.Lessons.Update(lesson);
+                    }
+                }
+                context.SaveChanges();
+            }
         }
     }
 }

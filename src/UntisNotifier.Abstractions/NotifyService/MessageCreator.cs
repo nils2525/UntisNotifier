@@ -11,9 +11,11 @@ namespace UntisNotifier.Abstractions.NotifyService
         public static IEnumerable<string> CreateUserFriendlyMessage(IEnumerable<Lesson> lessons)
         {
             //All cancalled lessons
-            var cancelledLessons = lessons.Where(l => l.Status.Cancelled == true && l.Date.Date >= DateTime.Today.Date).ToList();
+            var cancelledLessons = lessons.Where(l => l.LessonStatus == LessonStatus.Canceled).ToList();
             //All non default lessons
-            var nonDefaultLessons = lessons.Where(l => l.Status.Standard == null && l.Date.Date >= DateTime.Today.Date).ToList();
+            var nonDefaultLessons = lessons.Where(l => (l.RoomIsAbnormal || l.TeacherIsAbnormal) && l.LessonStatus != LessonStatus.Canceled).ToList();
+            //exams
+            var exams = lessons.Where(c => c.LessonStatus == LessonStatus.Exam).ToList();
 
             var messages = new List<string>();
             
@@ -21,16 +23,16 @@ namespace UntisNotifier.Abstractions.NotifyService
             foreach (var cancelledLesson in cancelledLessons)
             {
                 var messageString = "";
-                if (cancelledLesson.Date.Date == DateTime.Today.Date)
+                if (cancelledLesson.StartTime.Date == DateTime.Today.Date)
                 {
                     messageString = "Heute";
                 }
                 else
                 {
-                    messageString = "Am " + cancelledLesson.Date.ToString("dd.MM.yyyy");
+                    messageString = "Am " + cancelledLesson.StartTime.ToString("dd.MM.yyyy");
                 }
 
-                messageString = messageString + " entfällt die " + cancelledLesson.Hour + " Std. (Fach " + cancelledLesson.Elements.Where(c => c.Type == ElementType.Subject).FirstOrDefault().LongName + ")";
+                messageString = messageString + " entfällt die " + cancelledLesson.SchoolHour + " Std. (Fach " + cancelledLesson.FullName + ")";
                 messages.Add(messageString);
             }
 
@@ -38,16 +40,16 @@ namespace UntisNotifier.Abstractions.NotifyService
             foreach (var nonDefaultLesson in nonDefaultLessons)
             {
                 var messageString = "";
-                if (nonDefaultLesson.Date.Date == DateTime.Today.Date)
+                if (nonDefaultLesson.StartTime.Date == DateTime.Today.Date)
                 {
                     messageString = "Heute";
                 }
                 else
                 {
-                    messageString = "Am " + nonDefaultLesson.Date.ToString("dd.MM.yyyy");
+                    messageString = "Am " + nonDefaultLesson.StartTime.ToString("dd.MM.yyyy");
                 }
 
-                messageString = messageString + " wird die " + nonDefaultLesson.Hour + " Std. (Fach " + nonDefaultLesson.Elements.Where(c => c.Type == ElementType.Subject).FirstOrDefault().LongName + ") vertreten";
+                messageString = messageString + " findet die " + nonDefaultLesson.SchoolHour + " Std. (Fach " + nonDefaultLesson.FullName + ") in Raum " + nonDefaultLesson.Room + " bei " + nonDefaultLesson.Teacher + " statt.";
                 messages.Add(messageString);
             }
 

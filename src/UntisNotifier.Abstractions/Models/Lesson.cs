@@ -1,115 +1,36 @@
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Text;
 
 namespace UntisNotifier.Abstractions.Models
 {
     public class Lesson
     {
-        [JsonProperty("id")]
         public int ID { get; set; }
 
-        [JsonProperty("lessonId")]
-        public int LessonId { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
 
-        [JsonProperty("date")]
-        public int DateInt { get; set; }
+        public int SchoolHour { get; set; }
 
-        [JsonIgnore]
-        public DateTime Date
-        {
-            get
-            {
-                var provider = CultureInfo.InvariantCulture;
-                return DateTime.ParseExact(DateInt.ToString(), "yyyyMMdd", provider);
-            }
-        }
-
-        public int Hour
-        {
-            get
-            {
-                switch (StartTime)
-                {
-                    case 750:
-                        return 1;
-                    case 835:
-                        return 2;
-                    case 940:
-                        return 3;
-                    case 1025:
-                        return 4;
-                    case 1130:
-                        return 5;
-                    case 1215:
-                        return 6;
-                    case 1315:
-                        return 7;
-                    case 1400:
-                        return 8;
-                    default:
-                        return -1;
-
-                }
-            }
-        }
-
-        [JsonProperty("startTime")]
-        public int StartTime { get; set; }
-
-        [JsonProperty("endTime")]
-        public int EndTime { get; set; }
-
-        [JsonProperty("hasInfo")]
-        public bool HasInfo { get; set; }
-
-        [JsonProperty("priority")]
-        public int Priority { get; set; }
-
-        [JsonProperty("is")]
-        public LessonStatus Status { get; set; }
-
-        [JsonProperty("elements")]
-        public List<Element> Elements { get; set; }
-    }
-
-    public class LessonStatus
-    {
-        [JsonProperty("standard")]
-        public bool? Standard { get; set; }
-
-        [JsonProperty("cancelled")]
-        public bool? Cancelled { get; set; }
-
-        [JsonProperty("event")]
-        public bool Event { get; set; }
-    }
-
-    public class Element
-    {
-        [JsonProperty("type")]
-        public ElementType Type { get; set; }
-
-        [JsonProperty("id")]
-        public int ID { get; set; }
-
-        [JsonProperty("name")]
         public string Name { get; set; }
+        public string FullName { get; set; }
 
-        [JsonProperty("longName")]
-        public string LongName { get; set; }
+        public LessonStatus LessonStatus { get; set; }
+
+        public string Room { get; set; }
+        public bool RoomIsAbnormal { get; set; }
+
+        public string Teacher { get; set; }
+        public string FullTeacherName { get; set; }
+        public bool TeacherIsAbnormal { get; set; }
     }
 
-
-    public enum ElementType
+    public enum LessonStatus
     {
-        None,
-        Class,
-        Teacher,
-        Subject,
-        Student
+        Normal,
+        Exam,
+        Canceled,
+        Event
     }
 }
-
