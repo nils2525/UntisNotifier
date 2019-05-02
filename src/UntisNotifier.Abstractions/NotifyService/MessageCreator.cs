@@ -53,6 +53,22 @@ namespace UntisNotifier.Abstractions.NotifyService
                 messages.Add(messageString);
             }
 
+            foreach(var exam in exams)
+            {
+                var messageString = "";
+                if (exam.StartTime.Date == DateTime.Today.Date)
+                {
+                    messageString = "Heute";
+                }
+                else
+                {
+                    messageString = "Am " + exam.StartTime.ToString("dd.MM.yyyy");
+                }
+
+                messageString = messageString + " wird ein/e Klausur/Test im Fach " + exam.Name + " in der " + exam.SchoolHour + "geschrieben.";
+                messages.Add(messageString);
+            }
+
             return messages;
         }
     }
