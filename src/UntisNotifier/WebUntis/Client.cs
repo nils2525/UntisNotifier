@@ -190,7 +190,7 @@ namespace UntisNotifier.WebUntis
                 }
             }
 
-            return lessons.Where(l => l.LessonStatus != Abstractions.Models.LessonStatus.Normal && l.StartTime.Date >= DateTime.Today.Date).ToList();
+            return result;
         }
 
 
@@ -261,6 +261,7 @@ namespace UntisNotifier.WebUntis
                 FullTeacherName = teacher.LongName,
                 TeacherIsAbnormal = teacher.State == ElementState.Substituted,
                 Room = room.Name,
+                RoomFullName = room.LongName,
                 RoomIsAbnormal = lessonResult.Status.RoomSubstitution ?? room.State == ElementState.Substituted,
                 SchoolHour = lessonResult.Hour,
                 LessonStatus = status,

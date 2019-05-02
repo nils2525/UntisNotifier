@@ -40,10 +40,12 @@ namespace UntisNotifier.Telegram
 
             //Create message
             var messages = MessageCreator.CreateUserFriendlyMessage(lessons);
-            var finalMessage = String.Join("\n", messages);
-
-            //Send message to telegram client
-            return Task.Run(() => TelegramClient.Instance.SendMessageAsync(finalMessage, _chatId)).Result;
+            foreach(var message in messages)
+            {
+                //Send message to telegram client
+                Task.Run(() => TelegramClient.Instance.SendMessageAsync(message, _chatId)).Wait();
+            }
+            return true;
         }
     }
 }

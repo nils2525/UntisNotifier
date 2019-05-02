@@ -49,7 +49,7 @@ namespace UntisNotifier.Abstractions.NotifyService
                     messageString = "Am " + nonDefaultLesson.StartTime.ToString("dd.MM.yyyy");
                 }
 
-                messageString = messageString + " findet die " + nonDefaultLesson.SchoolHour + " Std. (Fach " + nonDefaultLesson.FullName + ") in Raum " + nonDefaultLesson.Room + " bei " + nonDefaultLesson.Teacher + " statt.";
+                messageString = messageString + " findet die " + nonDefaultLesson.SchoolHour + " Std. (" + nonDefaultLesson.Name + ") in Raum " + nonDefaultLesson.Room + (false && !String.IsNullOrWhiteSpace(nonDefaultLesson.RoomFullName) ? (" (" +  nonDefaultLesson.RoomFullName + ")") : "") + " bei " + nonDefaultLesson.Teacher + " statt.";
                 messages.Add(messageString);
             }
 

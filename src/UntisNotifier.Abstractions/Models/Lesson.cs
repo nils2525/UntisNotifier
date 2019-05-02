@@ -19,6 +19,7 @@ namespace UntisNotifier.Abstractions.Models
         public LessonStatus LessonStatus { get; set; }
 
         public string Room { get; set; }
+        public string RoomFullName { get; set; }
         public bool RoomIsAbnormal { get; set; }
 
         public string Teacher { get; set; }

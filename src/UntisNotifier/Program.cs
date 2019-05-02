@@ -35,7 +35,7 @@ namespace UntisNotifier
                 }
 
 
-                if (abnormalLessons != null)
+                if (abnormalLessons?.Count >  0)
                 {
                     var tasks = new List<Task>();
                     configurator.Notifiers.ForEach(n => tasks.Add(Task.Factory.StartNew(() => n.Notify(abnormalLessons))));
