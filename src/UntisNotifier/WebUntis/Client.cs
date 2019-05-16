@@ -121,6 +121,10 @@ namespace UntisNotifier.WebUntis
             {
                 //parsed DateString for today
                 var currentWeekDate = DateTime.Now.ToString("yyyy-MM-dd");
+                if(!String.IsNullOrWhiteSpace(Program.WeekDate))
+                {
+                    currentWeekDate = Program.WeekDate;
+                }
 
                 //Get raw data
                 var request = await _client.GetAsync(_urls.WeeklyDataUri + $"?elementType=1&elementId=972&date={currentWeekDate}&formatId=1");
@@ -231,13 +235,8 @@ namespace UntisNotifier.WebUntis
             var room = lessonResult.Elements.Where(c => c.Type == ElementType.Student).First();
 
             Abstractions.Models.LessonStatus status = Abstractions.Models.LessonStatus.Normal;
-
-
-            if (teacher.State == ElementState.Regular || lessonResult.Status.Standard == true)
-            {
-                status = Abstractions.Models.LessonStatus.Normal;
-            }
-            else if (lessonResult.Status.Cancelled == true)
+                       
+            if (lessonResult.Status.Cancelled == true)
             {
                 status = Abstractions.Models.LessonStatus.Canceled;
             }
@@ -249,7 +248,10 @@ namespace UntisNotifier.WebUntis
             {
                 status = Abstractions.Models.LessonStatus.Event;
             }
-
+            else if (teacher.State == ElementState.Regular || lessonResult.Status.Standard == true)
+            {
+                status = Abstractions.Models.LessonStatus.Normal;
+            }
 
             var lesson = new Lesson()
             {
